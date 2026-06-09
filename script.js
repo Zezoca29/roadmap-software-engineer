@@ -203,6 +203,127 @@
   };
 
   /* -------------------------------------------------------------------
+     STUDY MODAL — opens when clicking a .topic tag
+     ------------------------------------------------------------------- */
+  const StudyModal = (() => {
+    const TAB_ICONS = { links: "🌐", videos: "▶", books: "📖", blogs: "✍" };
+    let currentData = null;
+
+    function open(topicKey) {
+      const data = (window.STUDY_DATA || {})[topicKey];
+      if (!data) return;
+      currentData = data;
+
+      document.getElementById("study-phase-tag").textContent  = data.phase;
+      document.getElementById("study-topic-title").textContent = topicKey;
+      document.getElementById("study-topic-desc").textContent  = data.description;
+
+      /* focus / hot tags */
+      const focusEl = document.getElementById("study-focus-tags");
+      focusEl.innerHTML = "";
+      if (data.hot2026) {
+        const hot = document.createElement("span");
+        hot.className = "study-hot-badge";
+        hot.textContent = "🔥 HOT 2026";
+        focusEl.appendChild(hot);
+      }
+      (data.focus || []).forEach(f => {
+        const tag = document.createElement("span");
+        tag.className = "study-focus-tag";
+        tag.textContent = f;
+        focusEl.appendChild(tag);
+      });
+
+      /* reset to first tab */
+      document.querySelectorAll(".study-tab").forEach(t => t.classList.remove("active"));
+      const firstTab = document.querySelector(".study-tab[data-tab='links']");
+      if (firstTab) firstTab.classList.add("active");
+      renderTab("links");
+
+      const overlay = document.getElementById("study-overlay");
+      overlay.setAttribute("aria-hidden", "false");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+
+      /* focus trap start */
+      document.getElementById("study-close").focus();
+    }
+
+    function close() {
+      const overlay = document.getElementById("study-overlay");
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      currentData = null;
+    }
+
+    function renderTab(tab) {
+      const content = document.getElementById("study-content");
+      const items   = (currentData || {})[tab] || [];
+      const icon    = TAB_ICONS[tab] || "📌";
+
+      if (!items.length) {
+        content.innerHTML = `<div class="study-empty">// Sem recursos para esta categoria ainda.</div>`;
+        return;
+      }
+
+      content.innerHTML = items.map(item => {
+        const badge  = item.badge  ? `<span class="resource-badge">${item.badge}</span>` : "";
+        const author = item.author ? `<span class="resource-author">— ${item.author}</span>` : "";
+        return `
+          <a class="resource-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
+            <div class="resource-icon">${icon}</div>
+            <div class="resource-body">
+              <div class="resource-meta">
+                <span class="resource-title">${item.title}</span>
+                ${badge}
+                ${author}
+              </div>
+              <p class="resource-desc">${item.desc}</p>
+              <span class="resource-link-arrow">Acessar →</span>
+            </div>
+          </a>`;
+      }).join("");
+    }
+
+    function init() {
+      /* topic click */
+      document.querySelectorAll(".topic").forEach(el => {
+        el.addEventListener("click", () => open(el.textContent.trim()));
+        el.setAttribute("role", "button");
+        el.setAttribute("tabindex", "0");
+        el.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(el.textContent.trim()); }
+        });
+      });
+
+      /* tab switch */
+      document.querySelectorAll(".study-tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".study-tab").forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+          renderTab(tab.dataset.tab);
+        });
+      });
+
+      /* close button */
+      document.getElementById("study-close").addEventListener("click", close);
+
+      /* click outside panel */
+      document.getElementById("study-overlay").addEventListener("click", e => {
+        if (e.target === e.currentTarget) close();
+      });
+
+      /* Escape */
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && document.getElementById("study-overlay").classList.contains("open")) close();
+      });
+    }
+
+    return { init };
+  })();
+
+  /* -------------------------------------------------------------------
      BOOT EVERYTHING
      ------------------------------------------------------------------- */
   window.addEventListener("DOMContentLoaded", () => {
@@ -213,5 +334,6 @@
     Reveal();
     Counters();
     Clock();
+    StudyModal.init();
   });
 })();

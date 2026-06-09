@@ -523,6 +523,31 @@
   </div>
 </footer>
 
+<!-- ================= STUDY MODAL ================= -->
+<div class="study-overlay" id="study-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="study-panel">
+    <span class="bracket tr"></span>
+    <span class="bracket bl"></span>
+    <div class="study-header">
+      <div class="study-header-info">
+        <div class="study-phase-tag" id="study-phase-tag"></div>
+        <h2 class="study-topic-title" id="study-topic-title"></h2>
+        <p class="study-topic-desc" id="study-topic-desc"></p>
+        <div class="study-focus-tags" id="study-focus-tags"></div>
+      </div>
+      <button class="study-close" id="study-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="study-tabs" role="tablist" aria-label="Categorias de estudo">
+      <button class="study-tab active" data-tab="links" role="tab">🌐 Links</button>
+      <button class="study-tab" data-tab="videos" role="tab">▶ Vídeos</button>
+      <button class="study-tab" data-tab="books" role="tab">📖 Livros</button>
+      <button class="study-tab" data-tab="blogs" role="tab">✍ Blogs</button>
+    </div>
+    <div class="study-content" id="study-content"></div>
+  </div>
+</div>
+
+<script src="study-data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
