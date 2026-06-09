@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Software Engineering Mastery Roadmap — Stark Engineering HUD</title>
+<meta name="description" content="Roadmap de evolução em Engenharia de Software, do código tradicional à engenharia de sistemas de elite." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ================= BOOT SEQUENCE ================= -->
+<div id="boot">
+  <div class="boot-ring"></div>
+  <div class="boot-title">STARK ENGINEERING OS</div>
+  <div class="boot-log" id="boot-log"></div>
+  <div class="boot-bar"><span id="boot-bar"></span></div>
+</div>
+
+<!-- ================= BACKGROUND LAYERS ================= -->
+<div class="bg-layer bg-gradient"></div>
+<div class="bg-layer bg-grid"></div>
+<canvas id="particles"></canvas>
+<div class="cursor-glow"></div>
+<div class="scanlines"></div>
+
+<!-- corner HUD frame -->
+<div class="hud-frame">
+  <span class="hud-corner tl"></span><span class="hud-corner tr"></span>
+  <span class="hud-corner bl"></span><span class="hud-corner br"></span>
+</div>
+<div class="hud-tick left">SYS // ENG-CORE-v6</div>
+<div class="hud-tick right">SECTOR // MASTERY</div>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark"></span>
+    <span>
+      <span class="brand-name">STARK<b>ENG</b></span>
+      <span class="brand-sub">SYSTEMS COMMAND</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#foundations">Foundations</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#distributed">Distributed</a></li>
+    <li><a href="#performance">Resilience</a></li>
+    <li><a href="#socio">Sociotechnical</a></li>
+    <li><a href="#economics">Economics</a></li>
+    <li><a href="#evolution">Evolution</a></li>
+  </ul>
+  <div class="nav-status">
+    <span class="status-dot"></span>
+    <span class="status-txt">ONLINE · <span id="sys-clock">00:00:00</span></span>
+  </div>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-holo-lines">
+    <span class="holo-line" style="animation-delay:0s"></span>
+    <span class="holo-line" style="animation-delay:-2.4s"></span>
+    <span class="holo-line" style="animation-delay:-4.8s"></span>
+  </div>
+
+  <div class="hero-inner">
+    <!-- SIGNATURE: arc-reactor / radar core -->
+    <div class="hero-reactor" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs>
+          <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#bff6ff"/>
+            <stop offset="45%" stop-color="#00e5ff"/>
+            <stop offset="100%" stop-color="#0a3d8f" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#00e5ff" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.85"/>
+          </linearGradient>
+        </defs>
+
+        <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(0,229,255,.12)" stroke-width="1"/>
+        <g class="ring-rotate">
+          <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(0,229,255,.45)" stroke-width="1.2"
+                  stroke-dasharray="4 10"/>
+        </g>
+        <g class="ring-rotate-r">
+          <circle cx="100" cy="100" r="62" fill="none" stroke="rgba(41,121,255,.6)" stroke-width="2"
+                  stroke-dasharray="60 24 18 24"/>
+        </g>
+        <!-- radar sweep -->
+        <g class="ring-rotate" style="animation-duration:6s">
+          <path d="M100 100 L100 22 A78 78 0 0 1 168 64 Z" fill="url(#sweepGrad)" opacity="0.25"/>
+        </g>
+        <!-- spokes -->
+        <g stroke="rgba(0,229,255,.3)" stroke-width="1">
+          <line x1="100" y1="44" x2="100" y2="58"/>
+          <line x1="100" y1="142" x2="100" y2="156"/>
+          <line x1="44" y1="100" x2="58" y2="100"/>
+          <line x1="142" y1="100" x2="156" y2="100"/>
+        </g>
+        <circle class="reactor-core" cx="100" cy="100" r="34" fill="url(#coreGrad)"/>
+        <circle cx="100" cy="100" r="20" fill="none" stroke="#bff6ff" stroke-width="1.5" opacity="0.8"/>
+        <polygon points="100,86 112,107 88,107" fill="#eaf6ff" opacity="0.9"/>
+      </svg>
+    </div>
+
+    <p class="hero-kicker">// Engineering Trajectory · Staff → Principal</p>
+    <h1 class="hero-title">Software Engineering<br>Mastery Roadmap</h1>
+    <p class="hero-sub">From Traditional Coding to Elite Systems Engineering</p>
+
+    <blockquote class="hero-quote">
+      <b>“Engineering is Complexity Management Under Constraints.”</b><br>
+      Cada fase abaixo é um salto na forma como você raciocina sobre sistemas — não apenas no que você codifica.
+    </blockquote>
+
+    <div class="hero-cta">
+      <a class="btn" href="#foundations">Iniciar trajetória</a>
+      <a class="btn ghost" href="#evolution">Ver níveis de evolução</a>
+    </div>
+  </div>
+
+  <a class="scroll-hint" href="#foundations" aria-label="Rolar">
+    <span class="mouse"></span>
+    SCROLL
+  </a>
+</header>
+
+<!-- ================= INTRO STATS ================= -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-num"><span data-count="6">0</span></div><div class="stat-label">Fases de Domínio</div></div>
+      <div class="stat"><div class="stat-num"><span data-count="36">0</span><small>+</small></div><div class="stat-label">Conceitos Centrais</div></div>
+      <div class="stat"><div class="stat-num"><span data-count="6">0</span></div><div class="stat-label">Níveis de Carreira</div></div>
+      <div class="stat"><div class="stat-num"><span data-count="100">0</span><small>%</small></div><div class="stat-label">Systems Thinking</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <span class="section-eyebrow reveal">Trajectory Map</span>
+    <h2 class="section-title reveal">A jornada de <em>engenheiro</em> a <em>arquiteto de sistemas</em></h2>
+    <p class="section-lead reveal">Seis estágios encadeados. Cada um expande seu raio de impacto — do código local à economia da plataforma.</p>
+
+    <div class="timeline">
+
+      <!-- ===== PHASE 1 ===== -->
+      <article class="phase reveal" id="foundations">
+        <span class="phase-node"><b>01</b></span>
+        <div class="card">
+          <span class="bracket tr"></span><span class="bracket bl"></span>
+          <div class="phase-head">
+            <div class="phase-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M5 5l1.5 1.5M17.5 17.5L19 19M3 12h2M19 12h2M5 19l1.5-1.5M17.5 6.5L19 5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.6"/></svg>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-tag">Phase 01 · Foundations</div>
+              <h3 class="phase-name">Engineering Foundations</h3>
+              <p class="phase-desc">Os princípios que mantêm o código vivo por anos. Aqui você aprende a projetar para a mudança, não apenas para o deploy de hoje.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div>
+              <div class="topics">
+                <span class="topic">SOLID</span>
+                <span class="topic">Coupling &amp; Cohesion</span>
+                <span class="topic">Connascence</span>
+                <span class="topic">Refactoring</span>
+                <span class="topic">Complexity Management</span>
+              </div>
+              <div class="phase-notes">
+                <span class="note">Reducing systemic complexity</span>
+                <span class="note">Designing for evolution</span>
+                <span class="note">Sustainable architecture</span>
+              </div>
+            </div>
+            <div class="phase-diagram" aria-hidden="true">
+              <svg viewBox="0 0 220 160">
+                <g fill="none" stroke="#00e5ff" stroke-width="1.4">
+                  <rect x="20" y="20" width="48" height="34" rx="4"/>
+                  <rect x="86" y="20" width="48" height="34" rx="4"/>
+                  <rect x="152" y="20" width="48" height="34" rx="4"/>
+                  <rect x="53" y="100" width="48" height="34" rx="4"/>
+                  <rect x="119" y="100" width="48" height="34" rx="4"/>
+                </g>
+                <g stroke="rgba(41,121,255,.6)" stroke-width="1.2" stroke-dasharray="3 4">
+                  <path d="M44 54 L77 100"/><path d="M110 54 L77 100"/>
+                  <path d="M110 54 L143 100"/><path d="M176 54 L143 100"/>
+                </g>
+                <g fill="#00e5ff">
+                  <circle cx="44" cy="37" r="2"/><circle cx="110" cy="37" r="2"/><circle cx="176" cy="37" r="2"/>
+                  <circle cx="77" cy="117" r="2"/><circle cx="143" cy="117" r="2"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PHASE 2 ===== -->
+      <article class="phase reveal" id="architecture">
+        <span class="phase-node"><b>02</b></span>
+        <div class="card">
+          <span class="bracket tr"></span><span class="bracket bl"></span>
+          <div class="phase-head">
+            <div class="phase-icon">
+              <svg viewBox="0 0 24 24"><polygon points="12,3 19,7 19,15 12,19 5,15 5,7"/><polygon points="12,8 15,10 15,14 12,16 9,14 9,10"/></svg>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-tag">Phase 02 · Evolutionary Architecture</div>
+              <h3 class="phase-name">Evolutionary Architecture</h3>
+              <p class="phase-desc">Estruturas que separam o que muda do que permanece. O domínio passa a comandar a tecnologia — e não o contrário.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div>
+              <div class="topics">
+                <span class="topic">Clean Architecture</span>
+                <span class="topic">Hexagonal Architecture</span>
+                <span class="topic">DDD</span>
+                <span class="topic">CQRS</span>
+                <span class="topic">Event Driven</span>
+                <span class="topic">Modular Monolith</span>
+              </div>
+              <div class="phase-notes">
+                <span class="note">Ports &amp; adapters isolam o núcleo</span>
+                <span class="note">Linguagem ubíqua orienta o design</span>
+                <span class="note">Fronteiras explícitas entre contextos</span>
+              </div>
+            </div>
+            <div class="phase-diagram" aria-hidden="true">
+              <svg viewBox="0 0 220 170">
+                <defs><polygon id="hex" points="0,-26 22,-13 22,13 0,26 -22,13 -22,-13"/></defs>
+                <g fill="rgba(0,229,255,.05)" stroke="#00e5ff" stroke-width="1.3">
+                  <use href="#hex" x="110" y="85"/>
+                  <use href="#hex" x="64" y="58" stroke="rgba(41,121,255,.7)"/>
+                  <use href="#hex" x="156" y="58" stroke="rgba(41,121,255,.7)"/>
+                  <use href="#hex" x="64" y="112" stroke="rgba(41,121,255,.7)"/>
+                  <use href="#hex" x="156" y="112" stroke="rgba(41,121,255,.7)"/>
+                </g>
+                <text x="110" y="90" text-anchor="middle" fill="#bff6ff" font-family="Orbitron" font-size="9">CORE</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PHASE 3 ===== -->
+      <article class="phase reveal" id="distributed">
+        <span class="phase-node"><b>03</b></span>
+        <div class="card">
+          <span class="bracket tr"></span><span class="bracket bl"></span>
+          <div class="phase-head">
+            <div class="phase-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.4L5 15.6M12 7.4l7 8.2M7.4 18h9.2"/></svg>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-tag">Phase 03 · Distributed Systems</div>
+              <h3 class="phase-name">Distributed Systems</h3>
+              <p class="phase-desc">Quando a rede entra na conta, a verdade vira negociável. Você passa a projetar para a falha parcial e a consistência eventual.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div>
+              <div class="topics">
+                <span class="topic">CAP Theorem</span>
+                <span class="topic">PACELC</span>
+                <span class="topic">Eventual Consistency</span>
+                <span class="topic">Consensus</span>
+                <span class="topic">Distributed Transactions</span>
+                <span class="topic">Saga Pattern</span>
+              </div>
+              <div class="phase-notes">
+                <span class="note">Trade-offs explícitos sob partição</span>
+                <span class="note">Idempotência como princípio</span>
+                <span class="note">Compensação no lugar de rollback</span>
+              </div>
+            </div>
+            <div class="phase-diagram" aria-hidden="true">
+              <svg viewBox="0 0 220 170">
+                <g stroke="rgba(0,229,255,.4)" stroke-width="1" stroke-dasharray="2 4">
+                  <path d="M110 30 L52 80 M110 30 L168 80 M52 80 L110 140 M168 80 L110 140 M52 80 L168 80 M110 30 L110 140"/>
+                </g>
+                <g>
+                  <circle cx="110" cy="30" r="9" fill="rgba(0,229,255,.12)" stroke="#00e5ff" stroke-width="1.4"/>
+                  <circle cx="52" cy="80" r="9" fill="rgba(0,229,255,.12)" stroke="#00e5ff" stroke-width="1.4"/>
+                  <circle cx="168" cy="80" r="9" fill="rgba(0,229,255,.12)" stroke="#00e5ff" stroke-width="1.4"/>
+                  <circle cx="110" cy="140" r="9" fill="rgba(255,122,24,.15)" stroke="#ff7a18" stroke-width="1.4"/>
+                </g>
+                <g fill="#00e5ff"><circle cx="81" cy="55" r="2.2"/><circle cx="139" cy="55" r="2.2"/><circle cx="110" cy="85" r="2.2"/></g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PHASE 4 ===== -->
+      <article class="phase reveal" id="performance">
+        <span class="phase-node"><b>04</b></span>
+        <div class="card">
+          <span class="bracket tr"></span><span class="bracket bl"></span>
+          <div class="phase-head">
+            <div class="phase-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 20a8 8 0 1 1 16 0"/><line x1="12" y1="20" x2="16" y2="11"/><circle cx="12" cy="20" r="1.6"/></svg>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-tag">Phase 04 · Performance &amp; Resilience</div>
+              <h3 class="phase-name">Performance &amp; Resilience</h3>
+              <p class="phase-desc">Você para de medir médias e passa a caçar caudas. Observabilidade e caos viram ferramentas de design, não de pânico.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div>
+              <div class="topics">
+                <span class="topic">p99 Latency</span>
+                <span class="topic">Profiling</span>
+                <span class="topic">OpenTelemetry</span>
+                <span class="topic">Distributed Tracing</span>
+                <span class="topic">Chaos Engineering</span>
+                <span class="topic">Circuit Breakers</span>
+              </div>
+              <div class="phase-notes">
+                <span class="note">Tail latency define a experiência</span>
+                <span class="note">Falha controlada antes da falha real</span>
+                <span class="note">Telemetria como fonte de verdade</span>
+              </div>
+            </div>
+            <div class="phase-diagram" aria-hidden="true">
+              <svg viewBox="0 0 220 160">
+                <line x1="20" y1="135" x2="200" y2="135" stroke="rgba(120,200,255,.3)" stroke-width="1"/>
+                <line x1="20" y1="20" x2="20" y2="135" stroke="rgba(120,200,255,.3)" stroke-width="1"/>
+                <g>
+                  <rect x="34"  y="95" width="18" height="40" fill="rgba(0,229,255,.5)"/>
+                  <rect x="62"  y="70" width="18" height="65" fill="rgba(0,229,255,.55)"/>
+                  <rect x="90"  y="82" width="18" height="53" fill="rgba(0,229,255,.5)"/>
+                  <rect x="118" y="50" width="18" height="85" fill="rgba(41,121,255,.6)"/>
+                  <rect x="146" y="30" width="18" height="105" fill="#ff7a18" opacity="0.85"/>
+                  <rect x="174" y="60" width="18" height="75" fill="rgba(0,229,255,.5)"/>
+                </g>
+                <text x="155" y="24" fill="#ff7a18" font-family="Rajdhani" font-size="9" text-anchor="middle">p99</text>
+                <polyline points="43,100 71,76 99,88 127,56 155,36 183,66" fill="none" stroke="#bff6ff" stroke-width="1.2" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PHASE 5 ===== -->
+      <article class="phase reveal" id="socio">
+        <span class="phase-node"><b>05</b></span>
+        <div class="card">
+          <span class="bracket tr"></span><span class="bracket bl"></span>
+          <div class="phase-head">
+            <div class="phase-icon">
+              <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="12" cy="17" r="2.6"/><path d="M8 10.6v2M16 10.6v2M9.6 9.5 14.4 9.5M9.5 15 7 13M14.5 15 17 13"/></svg>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-tag">Phase 05 · Sociotechnical Engineering</div>
+              <h3 class="phase-name">Sociotechnical Engineering</h3>
+              <p class="phase-desc">A arquitetura do software espelha a arquitetura das equipes. Aqui você projeta times e plataformas como sistemas de primeira classe.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div>
+              <div class="topics">
+                <span class="topic">Conway's Law</span>
+                <span class="topic">Team Topologies</span>
+                <span class="topic">Ownership</span>
+                <span class="topic">Cognitive Load</span>
+                <span class="topic">Platform Engineering</span>
+              </div>
+              <div class="phase-notes">
+                <span class="note">Fronteiras de time = fronteiras de sistema</span>
+                <span class="note">Carga cognitiva como restrição de design</span>
+                <span class="note">Plataforma como produto interno</span>
+              </div>
+            </div>
+            <div class="phase-diagram" aria-hidden="true">
+              <svg viewBox="0 0 220 170">
+                <g stroke="rgba(41,121,255,.55)" stroke-width="1.2">
+                  <path d="M60 50 L110 95 M160 50 L110 95 M110 95 L60 140 M110 95 L160 140"/>
+                </g>
+                <g fill="rgba(0,229,255,.08)" stroke="#00e5ff" stroke-width="1.4">
+                  <rect x="42" y="34" width="36" height="30" rx="4"/>
+                  <rect x="142" y="34" width="36" height="30" rx="4"/>
+                  <rect x="42" y="126" width="36" height="30" rx="4"/>
+                  <rect x="142" y="126" width="36" height="30" rx="4"/>
+                </g>
+                <circle cx="110" cy="95" r="16" fill="rgba(255,122,24,.12)" stroke="#ff7a18" stroke-width="1.4"/>
+                <text x="110" y="98" text-anchor="middle" fill="#ffb877" font-family="Orbitron" font-size="7">PLATFORM</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== PHASE 6 ===== -->
+      <article class="phase reveal" id="economics">
+        <span class="phase-node"><b>06</b></span>
+        <div class="card">
+          <span class="bracket tr"></span><span class="bracket bl"></span>
+          <div class="phase-head">
+            <div class="phase-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 19h16M7 19v-6M12 19V8M17 19v-9"/><path d="M5 9l5-3 4 2 5-4"/><circle cx="19" cy="4" r="1.4" fill="#00e5ff" stroke="none"/></svg>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-tag">Phase 06 · Engineering Economics</div>
+              <h3 class="phase-name">Engineering Economics</h3>
+              <p class="phase-desc">Toda decisão técnica é uma decisão financeira disfarçada. Você passa a falar a língua do negócio em custo, risco e retorno.</p>
+            </div>
+          </div>
+          <div class="phase-body">
+            <div>
+              <div class="topics">
+                <span class="topic">FinOps</span>
+                <span class="topic">Cloud Economics</span>
+                <span class="topic">ROI Técnico</span>
+                <span class="topic">Build vs Buy</span>
+                <span class="topic">Cost per Request</span>
+              </div>
+              <div class="phase-notes">
+                <span class="note">Custo por requisição como métrica de design</span>
+                <span class="note">ROI orienta dívida técnica</span>
+                <span class="note">Eficiência como vantagem competitiva</span>
+              </div>
+            </div>
+            <div class="phase-diagram" aria-hidden="true">
+              <svg viewBox="0 0 220 160">
+                <circle cx="70" cy="80" r="46" fill="none" stroke="rgba(120,200,255,.18)" stroke-width="10"/>
+                <circle cx="70" cy="80" r="46" fill="none" stroke="#00e5ff" stroke-width="10"
+                        stroke-dasharray="200 289" stroke-linecap="round" transform="rotate(-90 70 80)"/>
+                <text x="70" y="78" text-anchor="middle" fill="#bff6ff" font-family="Orbitron" font-size="15">69%</text>
+                <text x="70" y="94" text-anchor="middle" fill="#7f93a8" font-family="Rajdhani" font-size="8">EFFICIENCY</text>
+                <g font-family="Rajdhani" font-size="9" fill="#7f93a8">
+                  <rect x="140" y="40" width="60" height="8" rx="4" fill="rgba(120,200,255,.12)"/>
+                  <rect x="140" y="40" width="44" height="8" rx="4" fill="#00e5ff"/>
+                  <text x="140" y="36">COMPUTE</text>
+                  <rect x="140" y="70" width="60" height="8" rx="4" fill="rgba(120,200,255,.12)"/>
+                  <rect x="140" y="70" width="28" height="8" rx="4" fill="#2979ff"/>
+                  <text x="140" y="66">STORAGE</text>
+                  <rect x="140" y="100" width="60" height="8" rx="4" fill="rgba(120,200,255,.12)"/>
+                  <rect x="140" y="100" width="18" height="8" rx="4" fill="#ff7a18"/>
+                  <text x="140" y="96">EGRESS</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+<!-- ================= EVOLUTION TIMELINE ================= -->
+<section class="section evolution" id="evolution">
+  <div class="wrap">
+    <span class="section-eyebrow reveal">Career Trajectory</span>
+    <h2 class="section-title reveal">A evolução do <em>operador</em> ao <em>systems thinker</em></h2>
+    <p class="section-lead reveal">Cada nível aumenta o raio de impacto — e o brilho do núcleo. O domínio não é escrever mais código; é precisar de menos para resolver mais.</p>
+
+    <div class="evo-track">
+      <div class="evo-stage reveal" style="--orb-fill:.04;--orb-glow:4px;--orb-glow-a:.12">
+        <div class="evo-orb"><b>I</b></div>
+        <div class="evo-level">LV · 01</div>
+        <div class="evo-name">Coder</div>
+        <div class="evo-tag">Resolve a tarefa</div>
+      </div>
+      <div class="evo-stage reveal d1" style="--orb-fill:.06;--orb-glow:8px;--orb-glow-a:.2">
+        <div class="evo-orb"><b>II</b></div>
+        <div class="evo-level">LV · 02</div>
+        <div class="evo-name">Software Engineer</div>
+        <div class="evo-tag">Projeta a solução</div>
+      </div>
+      <div class="evo-stage reveal d2" style="--orb-fill:.09;--orb-glow:14px;--orb-glow-a:.28">
+        <div class="evo-orb"><b>III</b></div>
+        <div class="evo-level">LV · 03</div>
+        <div class="evo-name">Senior Engineer</div>
+        <div class="evo-tag">Domina o sistema</div>
+      </div>
+      <div class="evo-stage reveal d3" style="--orb-fill:.13;--orb-glow:22px;--orb-glow-a:.38">
+        <div class="evo-orb"><b>IV</b></div>
+        <div class="evo-level">LV · 04</div>
+        <div class="evo-name">Staff Engineer</div>
+        <div class="evo-tag">Alinha sistemas</div>
+      </div>
+      <div class="evo-stage reveal d3" style="--orb-fill:.18;--orb-glow:30px;--orb-glow-a:.5">
+        <div class="evo-orb"><b>V</b></div>
+        <div class="evo-level">LV · 05</div>
+        <div class="evo-name">Principal Engineer</div>
+        <div class="evo-tag">Define a estratégia técnica</div>
+      </div>
+      <div class="evo-stage reveal d3" style="--orb-fill:.26;--orb-glow:42px;--orb-glow-a:.65">
+        <div class="evo-orb"><b>VI</b></div>
+        <div class="evo-level">LV · ∞</div>
+        <div class="evo-name">Systems Thinker</div>
+        <div class="evo-tag">Enxerga o todo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <p class="footer-quote">
+      <b>“A IA escreve o código. Você prova que o sistema funciona.”</b><br>
+      O próximo nível de engenharia não está em digitar mais rápido — está em raciocinar mais profundo.
+    </p>
+    <div class="footer-sig">
+      STARK ENGINEERING OS · v6.0<br>
+      <b>SYSTEMS COMMAND</b> // MASTERY SECTOR<br>
+      STATUS: ALL MODULES ONLINE
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
