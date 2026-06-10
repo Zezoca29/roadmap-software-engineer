@@ -8,7 +8,7 @@
 
 ## O que é
 
-Um roadmap visual e interativo que mapeia a jornada de **Coder → Systems Thinker**, organizado em 6 fases de domínio. Cada fase contém tópicos técnicos e, ao clicar em qualquer um deles, abre um painel de estudo com recursos curados: links, vídeos, livros e blogs.
+Um roadmap visual e interativo que mapeia a jornada de **Coder → Systems Thinker**, organizado em 6 fases de domínio com **33 tópicos técnicos**. Ao clicar em qualquer tópico, abre um painel de estudo com recursos curados: links, vídeos, livros e blogs.
 
 O design segue uma estética HUD (Heads-Up Display) inspirada em interfaces de sistemas militares/sci-fi — partículas em movimento, animações de boot, tipografia técnica e temas em cyan/azul.
 
@@ -16,14 +16,68 @@ O design segue uma estética HUD (Heads-Up Display) inspirada em interfaces de s
 
 ## As 6 Fases
 
-| Fase | Nome | Tópicos |
-|------|------|---------|
-| 01 | **Engineering Foundations** | SOLID, Coupling & Cohesion, Connascence, Refactoring, Complexity Management |
-| 02 | **Evolutionary Architecture** | Clean Architecture, Hexagonal Architecture, DDD, CQRS, Event Driven, Modular Monolith |
-| 03 | **Distributed Systems** | CAP Theorem, PACELC, Eventual Consistency, Consensus, Distributed Transactions, Saga Pattern |
-| 04 | **Performance & Resilience** | p99 Latency, Profiling, OpenTelemetry, Distributed Tracing, Chaos Engineering, Circuit Breakers |
-| 05 | **Sociotechnical Engineering** | Conway's Law, Team Topologies, Ownership, Cognitive Load, Platform Engineering |
-| 06 | **Engineering Economics** | FinOps, Cloud Economics, ROI Técnico, Build vs Buy, Cost per Request |
+### Phase 01 · Engineering Foundations
+
+| Tópico | Hot 2026 | Foco principal |
+|--------|----------|----------------|
+| SOLID | | Acoplamento, boundaries, design para mudança |
+| Coupling & Cohesion | | Acoplamento aferente/eferente, modularidade |
+| Connascence | | Propagação de mudança, hotspots |
+| Refactoring | | Hotspots, código legado, safe steps |
+| Complexity Management | | Cognitive complexity, fitness functions |
+
+### Phase 02 · Evolutionary Architecture
+
+| Tópico | Hot 2026 | Foco principal |
+|--------|----------|----------------|
+| Clean Architecture | | Boundaries explícitos, inversão de dependência |
+| Hexagonal Architecture | | Ports & Adapters, testabilidade sem infra |
+| DDD | | Bounded contexts, ubiquitous language, aggregates |
+| CQRS | | CQRS pragmático, read models otimizados |
+| Event Driven | 🔥 | Kafka, event sourcing, choreography vs orchestration |
+| Modular Monolith | | Evolutividade, migração gradual |
+
+### Phase 03 · Distributed Systems
+
+| Tópico | Hot 2026 | Foco principal |
+|--------|----------|----------------|
+| CAP Theorem | | CAP, PACELC, replication strategies, quorum |
+| PACELC | | Latência vs consistência, DynamoDB, Cassandra |
+| Eventual Consistency | | CRDTs, conflict resolution, read repair |
+| Consensus | | Raft, Paxos, leader election |
+| Distributed Transactions | | Saga, idempotência, outbox pattern |
+| Saga Pattern | | Choreography vs orchestration, compensações |
+
+### Phase 04 · Performance & Resilience
+
+| Tópico | Hot 2026 | Foco principal |
+|--------|----------|----------------|
+| p99 Latency | | GC pauses, heap pressure, lock contention |
+| Profiling | | Flame graphs, GC profiling, CPU vs I/O bound |
+| OpenTelemetry | 🔥 | Traces, metrics, logs, OTLP protocol |
+| Distributed Tracing | 🔥 | Context propagation, sampling, Jaeger/Tempo |
+| Chaos Engineering | | GameDays, blast radius, steady state hypothesis |
+| Circuit Breakers | | Retry storms, graceful degradation, fail-fast |
+
+### Phase 05 · Sociotechnical Engineering
+
+| Tópico | Hot 2026 | Foco principal |
+|--------|----------|----------------|
+| Conway's Law | | Inverse Conway Maneuver, team boundaries |
+| Team Topologies | 🔥 | Stream-aligned, platform, enabling, cognitive load |
+| Ownership | | Full-cycle developers, autonomia, team boundaries |
+| Cognitive Load | 🔥 | Platform como redutor de carga, autonomia |
+| Platform Engineering | 🔥 | IDP, golden paths, developer experience |
+
+### Phase 06 · Engineering Economics
+
+| Tópico | Hot 2026 | Foco principal |
+|--------|----------|----------------|
+| FinOps | 🔥 | Cloud cost governance, unit economics, showback |
+| Cloud Economics | | Compute vs egress, reserved vs on-demand |
+| ROI Técnico | | DORA metrics, dívida técnica quantificada |
+| Build vs Buy | | Strategic vs commodity, TCO, vendor lock-in |
+| Cost per Request | | Lambda vs container vs VM, caching, async |
 
 ---
 
@@ -40,9 +94,9 @@ Cada tópico é **clicável**. Ao clicar, um painel abre com 4 categorias de rec
 
 ### Destaques visuais
 
-- **🔥 HOT 2026** — badge nos tópicos mais relevantes no mercado atual (OpenTelemetry, Platform Engineering, Team Topologies, etc.)
+- **🔥 HOT 2026** — badge nos tópicos mais relevantes do mercado atual: Event Driven, OpenTelemetry, Distributed Tracing, Team Topologies, Cognitive Load, Platform Engineering, FinOps
 - **⭐ Melhor livro** — indica o livro principal de cada tópico
-- **Tags de foco** — os conceitos-chave que você deve dominar em cada tema
+- **Tags de foco** — conceitos-chave que você deve dominar em cada tema
 
 ### Como fechar o painel
 
@@ -52,37 +106,101 @@ Cada tópico é **clicável**. Ao clicar, um painel abre com 4 categorias de rec
 
 ---
 
-## Recursos curados por área
+## Recursos Curados por Área
 
 ### Canais do YouTube
-- [ByteByteGo](https://www.youtube.com/@ByteByteGo) — System design, distributed systems, arquitetura
-- [CodeOpinion](https://www.youtube.com/@CodeOpinion) — Arquitetura pragmática, DDD, CQRS
-- [ArjanCodes](https://www.youtube.com/@ArjanCodes) — SOLID, clean design, boas práticas
-- [Jakob Jenkov](https://www.youtube.com/@JakobJenkov) — JVM internals, performance, concorrência
+
+| Canal | Especialidade |
+|-------|--------------|
+| [ByteByteGo](https://www.youtube.com/@ByteByteGo) | System design, distributed systems, arquitetura visual |
+| [CodeOpinion](https://www.youtube.com/@CodeOpinion) | Arquitetura pragmática, DDD, CQRS sem dogmas |
+| [ArjanCodes](https://www.youtube.com/@ArjanCodes) | SOLID, clean design, boas práticas em Python |
+| [Jakob Jenkov](https://www.youtube.com/@JakobJenkov) | JVM internals, performance, concorrência |
+| [CNCF](https://www.youtube.com/@cncf) | OpenTelemetry, Kubernetes, cloud native |
 
 ### Cursos
-- [MIT 6.824 — Distributed Systems](https://pdos.csail.mit.edu/6.824) — A referência global em sistemas distribuídos, gratuito online
+
+| Curso | Descrição |
+|-------|-----------|
+| [MIT 6.824 — Distributed Systems](https://pdos.csail.mit.edu/6.824) | A referência global em sistemas distribuídos — Raft, Paxos, consenso. Gratuito online. |
+
+### Referências Técnicas Online
+
+| Recurso | Área |
+|---------|------|
+| [Refactoring Guru](https://refactoring.guru) | SOLID, design patterns, refactoring visual |
+| [Raft Visualization](https://thesecretlivesofdata.com/raft) | Visualização interativa do algoritmo Raft |
+| [Principles of Chaos Engineering](https://principlesofchaos.org) | Manifesto oficial do Chaos Engineering |
+| [OpenTelemetry Docs](https://opentelemetry.io) | Documentação oficial do padrão de observabilidade |
+| [DORA Research](https://dora.dev) | Métricas DORA — evidências de ROI de engenharia |
+| [FinOps Foundation](https://www.finops.org) | Frameworks e melhores práticas de FinOps |
+| [Platform Engineering](https://platformengineering.org) | Comunidade e recursos de Platform Engineering |
+| [CodeScene](https://codescene.com) | Análise de hotspots e complexidade comportamental |
+| [Martin Fowler's Bliki](https://martinfowler.com) | Referência global em design, arquitetura e padrões |
 
 ### Blogs de Referência
-- [Netflix Tech Blog](https://netflixtechblog.com)
-- [Uber Engineering](https://www.uber.com/blog/engineering)
-- [Cloudflare Blog](https://blog.cloudflare.com)
-- [Stripe Engineering](https://stripe.com/blog/engineering)
-- [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture)
-- [Martin Fowler's Bliki](https://martinfowler.com)
 
-### Livros Fundamentais (os mais recomendados)
-| Livro | Autor | Área |
-|-------|-------|------|
-| A Philosophy of Software Design | John Ousterhout | Fundamentos |
-| Software Design X-Rays | Adam Tornhill | Complexidade |
-| Domain-Driven Design | Eric Evans | Arquitetura |
-| Designing Data-Intensive Applications | Martin Kleppmann | Sistemas Distribuídos |
-| Systems Performance | Brendan Gregg | Performance |
-| Observability Engineering | Charity Majors et al. | Observabilidade |
-| Release It! | Michael T. Nygard | Resiliência |
-| Team Topologies | Skelton & Pais | Engenharia Organizacional |
-| Accelerate | Forsgren, Humble & Kim | Engenharia Organizacional |
+| Blog | Especialidade |
+|------|--------------|
+| [Netflix Tech Blog](https://netflixtechblog.com) | Chaos Engineering, performance, event-driven em escala |
+| [Uber Engineering](https://www.uber.com/blog/engineering) | Distributed systems, Kafka, DDD em produção |
+| [Cloudflare Blog](https://blog.cloudflare.com) | Edge computing, resiliência, custo por request |
+| [Stripe Engineering](https://stripe.com/blog/engineering) | Idempotência, transações, confiabilidade crítica |
+| [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture) | Cloud economics, FinOps, Well-Architected |
+
+---
+
+## Livros por Fase
+
+### Phase 01 · Engineering Foundations
+
+| Livro | Autor | Por que ler |
+|-------|-------|-------------|
+| **A Philosophy of Software Design** ⭐ | John Ousterhout | O melhor livro atual sobre complexidade e design de módulos |
+| Software Design X-Rays | Adam Tornhill | Hotspots e acoplamento comportamental com dados reais de git |
+| Clean Code | Robert C. Martin | Fundação sobre código limpo — leia com senso crítico |
+| Refactoring | Martin Fowler | Catálogo definitivo de técnicas de refactoring |
+| Working Effectively with Legacy Code | Michael Feathers | O guia para trabalhar com código sem testes |
+| Building Evolutionary Architectures | Ford, Parsons & Kua | Fitness functions e arquiteturas que evoluem |
+
+### Phase 02 · Evolutionary Architecture
+
+| Livro | Autor | Por que ler |
+|-------|-------|-------------|
+| **Domain-Driven Design** ⭐ | Eric Evans | O Blue Book — fundação de bounded contexts e DDD |
+| Implementing Domain-Driven Design | Vaughn Vernon | O Red Book — implementação prática do DDD |
+| Building Evolutionary Architectures | Ford, Parsons & Kua | Arquiteturas com fitness functions e evolução contínua |
+| A Philosophy of Software Design | John Ousterhout | Módulos profundos e boundaries claros como princípio |
+
+### Phase 03 · Distributed Systems
+
+| Livro | Autor | Por que ler |
+|-------|-------|-------------|
+| **Designing Data-Intensive Applications** ⭐ | Martin Kleppmann | O melhor livro do mundo em sistemas distribuídos |
+
+### Phase 04 · Performance & Resilience
+
+| Livro | Autor | Por que ler |
+|-------|-------|-------------|
+| **Systems Performance** ⭐ | Brendan Gregg | Flame graphs, profiling, CPU e I/O — referência definitiva |
+| **Observability Engineering** ⭐ | Charity Majors, Liz Fong-Jones & George Miranda | OpenTelemetry, tracing e debugging distribuído |
+| **Release It!** ⭐ | Michael T. Nygard | Circuit breakers, bulkheads, timeouts — resiliência na prática |
+| Chaos Engineering | Casey Rosenthal & Nora Jones | Guia prático pelos fundadores da disciplina |
+| Site Reliability Engineering | Google SRE Team | SLOs, SLAs e observabilidade — gratuito online |
+
+### Phase 05 · Sociotechnical Engineering
+
+| Livro | Autor | Por que ler |
+|-------|-------|-------------|
+| **Team Topologies** ⭐ | Matthew Skelton & Manuel Pais | Stream-aligned, platform e enabling teams — obrigatório |
+| **Accelerate** ⭐ | Forsgren, Humble & Kim | Evidence-based: métricas DORA e performance organizacional |
+
+### Phase 06 · Engineering Economics
+
+| Livro | Autor | Por que ler |
+|-------|-------|-------------|
+| **Accelerate** ⭐ | Forsgren, Humble & Kim | ROI de práticas técnicas — o argumento quantificado |
+| Systems Performance | Brendan Gregg | Performance e custo são dois lados da mesma moeda |
 
 ---
 
@@ -90,10 +208,12 @@ Cada tópico é **clicável**. Ao clicar, um painel abre com 4 categorias de rec
 
 ```
 roadmap-software-engineer/
-├── index.html          # Estrutura principal + modal de estudo
-├── style.css           # Estilos HUD + estilos do modal
-├── script.js           # Partículas, animações, boot sequence + lógica do modal
-└── study-data.js       # Base de dados de recursos por tópico (34 tópicos)
+├── index.html            # Estrutura principal + modal de estudo
+├── roadmap-v7.html       # Versão standalone v7 do roadmap
+├── roadmap-standalone.html  # Versão standalone independente
+├── style.css             # Estilos HUD + estilos do modal
+├── script.js             # Partículas, animações, boot sequence + lógica do modal
+└── study-data.js         # Base de dados de recursos por tópico (33 tópicos)
 ```
 
 **Sem dependências externas.** Vanilla JS puro, sem frameworks, sem build step. Apenas HTML, CSS e JS.
