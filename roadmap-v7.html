@@ -308,56 +308,6 @@ img,svg{display:block;max-width:100%}
   #term-layer{display:none}
 }
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-
-/* ---------- STUDY MODAL ---------- */
-.study-overlay{position:fixed;inset:0;z-index:10100;display:flex;align-items:center;justify-content:center;
-  background:rgba(4,5,7,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
-.study-overlay.open{opacity:1;visibility:visible}
-.study-panel{position:relative;width:min(800px,95vw);max-height:88vh;display:flex;flex-direction:column;
-  background:rgba(7,10,16,.97);border:1px solid rgba(0,229,255,.28);border-radius:12px;overflow:hidden;
-  box-shadow:0 0 90px -20px rgba(0,229,255,.4),0 40px 80px -30px rgba(0,0,0,.8)}
-.study-panel::before{content:"";position:absolute;left:0;top:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--cyan),var(--blue),transparent);z-index:1}
-.study-header{padding:26px 32px 18px;border-bottom:1px solid var(--hairline);display:flex;gap:16px;
-  justify-content:space-between;align-items:flex-start}
-.study-phase-tag{font:600 10px/1 var(--f-head);letter-spacing:3px;color:var(--energy);text-transform:uppercase;margin-bottom:8px}
-.study-title{font:700 22px/1.1 var(--f-display);color:var(--white-tech);margin-bottom:10px}
-.study-desc{font-size:13.5px;color:var(--muted);line-height:1.6;max-width:580px}
-.study-focus-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.study-hot-badge{font:700 10px/1 var(--f-head);letter-spacing:2px;padding:5px 10px;border-radius:4px;
-  background:rgba(255,122,24,.15);border:1px solid rgba(255,122,24,.4);color:var(--energy)}
-.study-focus-tag{font:600 11px/1 var(--f-head);letter-spacing:.5px;padding:5px 10px;border-radius:4px;
-  background:rgba(0,229,255,.06);border:1px solid var(--hairline);color:var(--cyan-soft)}
-.study-close{flex:0 0 auto;background:none;border:1px solid var(--hairline);border-radius:6px;
-  color:var(--muted);font-size:16px;cursor:pointer;padding:8px 13px;transition:all .2s;line-height:1}
-.study-close:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:var(--glow-cyan)}
-.study-tabs{display:flex;border-bottom:1px solid var(--hairline);padding:0 32px;background:rgba(0,0,0,.2)}
-.study-tab{font:600 11px/1 var(--f-head);letter-spacing:2px;text-transform:uppercase;padding:14px 22px;
-  background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;
-  color:var(--muted);cursor:pointer;transition:all .25s var(--ease)}
-.study-tab:hover{color:var(--cyan-soft)}
-.study-tab.active{color:var(--cyan);border-bottom-color:var(--cyan)}
-.study-content{overflow-y:auto;padding:22px 32px 28px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:200px}
-.study-content::-webkit-scrollbar{width:5px}
-.study-content::-webkit-scrollbar-thumb{background:rgba(0,229,255,.25);border-radius:3px}
-.resource-card{display:flex;gap:14px;padding:14px 18px;border-radius:8px;border:1px solid var(--hairline);
-  background:rgba(120,200,255,.03);text-decoration:none;transition:all .25s var(--ease);cursor:pointer}
-.resource-card:hover{border-color:rgba(0,229,255,.35);background:rgba(0,229,255,.06);transform:translateX(4px)}
-.resource-icon{font-size:20px;flex:0 0 auto;margin-top:2px}
-.resource-body{flex:1;min-width:0}
-.resource-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
-.resource-title{font:600 14px/1.2 var(--f-head);letter-spacing:.3px;color:var(--white-tech)}
-.resource-badge{font:700 9px/1 var(--f-head);letter-spacing:1.5px;padding:3px 7px;border-radius:3px;
-  background:rgba(255,122,24,.15);border:1px solid rgba(255,122,24,.35);color:var(--energy-soft)}
-.resource-author{font:500 12px/1 var(--f-mono);color:var(--muted)}
-.resource-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
-.resource-link-arrow{display:inline-block;font:600 11px/1 var(--f-head);letter-spacing:1px;
-  color:var(--cyan);margin-top:7px;opacity:.65;transition:opacity .2s}
-.resource-card:hover .resource-link-arrow{opacity:1}
-.study-empty{font:400 13px/1.6 var(--f-mono);color:var(--muted-2);text-align:center;padding:50px 0}
-.topic[data-mapped]{cursor:pointer}
-.topic[data-mapped]:hover{border-color:var(--cyan);color:var(--cyan-soft);box-shadow:var(--glow-cyan)}
 </style>
 </head>
 <body>
@@ -1048,28 +998,6 @@ img,svg{display:block;max-width:100%}
 </section>
 
 <!-- ============ FOOTER ============ -->
-<!-- ============ STUDY MODAL ============ -->
-<div id="study-overlay" class="study-overlay" role="dialog" aria-modal="true" aria-labelledby="study-topic-title" aria-hidden="true">
-  <div class="study-panel">
-    <div class="study-header">
-      <div style="flex:1;min-width:0">
-        <div id="study-phase-tag" class="study-phase-tag"></div>
-        <h2 id="study-topic-title" class="study-title"></h2>
-        <p id="study-topic-desc" class="study-desc"></p>
-        <div id="study-focus-tags" class="study-focus-tags"></div>
-      </div>
-      <button id="study-close" class="study-close" aria-label="Fechar">✕</button>
-    </div>
-    <div class="study-tabs">
-      <button class="study-tab active" data-tab="links">🌐 Links</button>
-      <button class="study-tab" data-tab="videos">▶ Vídeos</button>
-      <button class="study-tab" data-tab="books">📖 Livros</button>
-      <button class="study-tab" data-tab="blogs">✍ Blogs</button>
-    </div>
-    <div id="study-content" class="study-content"></div>
-  </div>
-</div>
-
 <footer class="footer">
   <div class="wrap footer-grid">
     <p class="footer-quote">
@@ -1084,7 +1012,6 @@ img,svg{display:block;max-width:100%}
   </div>
 </footer>
 
-<script src="study-data.js"></script>
 <script>
 (() => {
   "use strict";
@@ -1323,148 +1250,9 @@ img,svg{display:block;max-width:100%}
     tick(); setInterval(tick, 1000);
   };
 
-  /* ---------- STUDY MODAL ---------- */
-  const StudyModal = (() => {
-    /* Mapeamento de tópicos v7 → chaves do STUDY_DATA */
-    const TOPIC_MAP = {
-      // Layer 01 · Code Craft
-      "Deep Modules":              "Complexity Management",
-      "Information Hiding":        "Coupling & Cohesion",
-      "SOLID & Connascence":       "SOLID",
-      "Refactoring Sistemático":   "Refactoring",
-      // Layer 02 · Architecture
-      "DDD & Bounded Contexts":    "DDD",
-      "Hexagonal / Clean":         "Hexagonal Architecture",
-      "Modular Monolith":          "Modular Monolith",
-      "CQRS & Event Driven":       "CQRS",
-      // Layer 04 · Distributed
-      "Consensus (Raft / Paxos)":  "Consensus",
-      "CAP & PACELC":              "CAP Theorem",
-      "Sagas & Compensation":      "Saga Pattern",
-      "Linearizability":           "Eventual Consistency",
-      // Layer 05 · Reliability
-      "p99 & Tail Latency":        "p99 Latency",
-      "Observability (OTel)":      "OpenTelemetry",
-      "Profiling Contínuo":        "Profiling",
-      "Chaos Engineering":         "Chaos Engineering",
-      // Layer 07 · Sociotech
-      "Team Topologies":           "Team Topologies",
-      "Cognitive Load":            "Cognitive Load",
-      "Platform as Product":       "Platform Engineering",
-      // Layer 08 · Strategy
-      "FinOps & Cloud Economics":  "FinOps",
-      "Build vs Buy":              "Build vs Buy",
-      "Cost per Request":          "Cost per Request",
-      "Tech Debt as Portfolio":    "ROI Técnico",
-    };
-
-    const TAB_ICONS = { links:"🌐", videos:"▶", books:"📖", blogs:"✍" };
-    let currentData = null;
-
-    function resolve(raw) {
-      return (window.STUDY_DATA || {})[TOPIC_MAP[raw] || raw] || null;
-    }
-
-    function open(rawKey) {
-      const data = resolve(rawKey);
-      if (!data) return;
-      currentData = data;
-      document.getElementById("study-phase-tag").textContent   = data.phase || "";
-      document.getElementById("study-topic-title").textContent = TOPIC_MAP[rawKey] || rawKey;
-      document.getElementById("study-topic-desc").textContent  = data.description || "";
-      /* focus / hot tags */
-      const focusEl = document.getElementById("study-focus-tags");
-      focusEl.innerHTML = "";
-      if (data.hot2026) {
-        const hot = document.createElement("span");
-        hot.className = "study-hot-badge"; hot.textContent = "🔥 HOT 2026";
-        focusEl.appendChild(hot);
-      }
-      (data.focus || []).forEach(f => {
-        const tag = document.createElement("span");
-        tag.className = "study-focus-tag"; tag.textContent = f;
-        focusEl.appendChild(tag);
-      });
-      /* reset tabs */
-      document.querySelectorAll(".study-tab").forEach(t => t.classList.remove("active"));
-      const first = document.querySelector(".study-tab[data-tab='links']");
-      if (first) first.classList.add("active");
-      renderTab("links");
-      const overlay = document.getElementById("study-overlay");
-      overlay.setAttribute("aria-hidden","false");
-      overlay.classList.add("open");
-      document.body.style.overflow = "hidden";
-      document.getElementById("study-close").focus();
-    }
-
-    function close() {
-      const overlay = document.getElementById("study-overlay");
-      overlay.classList.remove("open");
-      overlay.setAttribute("aria-hidden","true");
-      document.body.style.overflow = "";
-      currentData = null;
-    }
-
-    function renderTab(tab) {
-      const content = document.getElementById("study-content");
-      const items   = (currentData || {})[tab] || [];
-      const icon    = TAB_ICONS[tab] || "📌";
-      if (!items.length) {
-        content.innerHTML = `<div class="study-empty">// Sem recursos para esta categoria ainda.</div>`;
-        return;
-      }
-      content.innerHTML = items.map(item => {
-        const badge  = item.badge  ? `<span class="resource-badge">${item.badge}</span>` : "";
-        const author = item.author ? `<span class="resource-author">— ${item.author}</span>` : "";
-        return `
-          <a class="resource-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
-            <div class="resource-icon">${icon}</div>
-            <div class="resource-body">
-              <div class="resource-meta">
-                <span class="resource-title">${item.title}</span>${badge}${author}
-              </div>
-              <p class="resource-desc">${item.desc}</p>
-              <span class="resource-link-arrow">Acessar →</span>
-            </div>
-          </a>`;
-      }).join("");
-    }
-
-    function init() {
-      document.querySelectorAll(".topic").forEach(el => {
-        const raw = el.textContent.trim();
-        if (!resolve(raw)) return;           /* só marca os que têm dados */
-        el.setAttribute("data-mapped","1");
-        el.setAttribute("role","button");
-        el.setAttribute("tabindex","0");
-        el.title = "Clique para ver recursos de estudo";
-        el.addEventListener("click", () => open(raw));
-        el.addEventListener("keydown", e => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(raw); }
-        });
-      });
-      document.querySelectorAll(".study-tab").forEach(tab => {
-        tab.addEventListener("click", () => {
-          document.querySelectorAll(".study-tab").forEach(t => t.classList.remove("active"));
-          tab.classList.add("active");
-          renderTab(tab.dataset.tab);
-        });
-      });
-      document.getElementById("study-close").addEventListener("click", close);
-      document.getElementById("study-overlay").addEventListener("click", e => {
-        if (e.target === e.currentTarget) close();
-      });
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape" && document.getElementById("study-overlay").classList.contains("open")) close();
-      });
-    }
-    return { init };
-  })();
-
   addEventListener("DOMContentLoaded", () => {
     Boot.run(); Terminal.init(); ReactorStatus.init();
     Particles.init(); CursorGlow(); Nav(); Reveal(); Counters(); Clock();
-    StudyModal.init();
   });
 })();
 </script>
